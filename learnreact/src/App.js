@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar title="Title"  about=" About"/>
-      <div className='container'>
+      <div className='container my-4'>
         
         <TextForm heading="Enter your text"/></div>
     </>
