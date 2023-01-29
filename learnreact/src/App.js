@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import TextForm from './Components/TextForm';
 import Navbar from './Components/Navbar';
+import About   from './Components/About';
 function App() {
 
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className='container my-4'>
         
         <TextForm heading="Enter your text"/></div>
+        <About/>
     </>
   );
 }
