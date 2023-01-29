@@ -5,9 +5,11 @@ export default function TextForm(props){
     console.log("changed")
     setText(event.target.value)
   }
-  const Click=()=>{
-    let newText1 =text;
-    setText(newText1)
+ 
+  const handleLoClick=()=>{
+    console.log("lowercase cliked");
+    let lower= text.toLowerCase();
+    setText(lower)
   }
   const handleUpClick=()=>{
     console.log(" Upper case was clicked"+ text);
@@ -15,7 +17,20 @@ export default function TextForm(props){
     let newText =text.toUpperCase();
     setText(newText)
   }
-  const [text, setText]= useState ('Enter text here');
+  const reset=()=>{
+    console.log("reset");
+    
+    let newText =" ";
+    setText(newText)
+  }
+  const speak = () => {
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    window.speechSynthesis.speak(msg);
+  }
+  
+  
+  const [text, setText]= useState ('');
  
     return (
         <>
@@ -24,16 +39,20 @@ export default function TextForm(props){
 <div className="mb-3">
   <textarea className="form-control" value={text} onChange={handleOnChange} id="my-box" rows="10" column="10"></textarea>
 </div> 
-<button className='btn btn-primary' onClick={handleUpClick}>Convert 
- to upperCase</button></div>
+<button className='btn btn-primary mx-5' onClick={handleUpClick}>Convert 
+ to upperCase</button>
+ <button className='btn btn-primary' onClick={handleLoClick}>Convert 
+ to LowerCase</button>
+ <button className='btn btn-outline-primary mx-3' onClick={reset}>reset</button>
+ </div>
  <div className='container my-3'>
   <h1 >Your text summery</h1>
   <p>{text.split(" ").length} words and {text.length}characters</p>
   <p>{0.008*text.split(" ").length} minutes read</p>
-  <button className='btn btn-primary' onClick={Click}
-   >
-   preview</button>  
-  
+<h2>preview</h2>
+
+<p>{text}</p>
+<button className='btn btn-outline-primary mx-3' onClick={speak}>speak</button>
    
   
  </div>
